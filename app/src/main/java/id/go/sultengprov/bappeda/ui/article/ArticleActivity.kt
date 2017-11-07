@@ -70,6 +70,8 @@ class ArticleActivity : AppCompatActivity(), ArticleView {
     override fun onArticleLoaded(articleList: MutableList<Article>, clear: Boolean) {
         if (clear) articles.clear()
         articles.addAll(articleList)
-        runOnUiThread{ articleAdapter.notifyDataSetChanged() }
+        runOnUiThread{
+            articleAdapter.notifyItemRangeInserted(articleAdapter.itemCount, articles.size)
+        }
     }
 }
