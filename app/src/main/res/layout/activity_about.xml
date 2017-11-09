@@ -5,5 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="id.go.sultengprov.bappeda.ui.about.AboutActivity">
-
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/toolbar"/>
+    </android.support.design.widget.AppBarLayout>
 </android.support.constraint.ConstraintLayout>

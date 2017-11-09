@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_beranda"
+            android:title="Beranda"/>
+        <item
+            android:id="@+id/menu_majalah"
+            android:title="Majalah Pembangun"/>
+        <!--<item
+            android:id="@+id/menu_profil"
+            android:title="Profil Bappeda"/>
+        <item
+            android:id="@+id/menu_publikasi"
+            android:title="Publikasi"/>-->
+        <item
+            android:id="@+id/menu_kontak"
+            android:title="Kontak Bappeda"/>
+        <item
+            android:id="@+id/menu_tentang"
+            android:title="Tentang Bappeda Sulteng"/>
+    </group>
+</menu>

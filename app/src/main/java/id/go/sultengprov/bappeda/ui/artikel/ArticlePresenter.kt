@@ -1,4 +1,4 @@
-package id.go.sultengprov.bappeda.ui.article
+package id.go.sultengprov.bappeda.ui.artikel
 
 import android.util.Log.d
 import id.go.sultengprov.bappeda.common.ARTICLE_URL

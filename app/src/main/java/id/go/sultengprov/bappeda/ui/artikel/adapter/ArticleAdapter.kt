@@ -1,4 +1,4 @@
-package id.go.sultengprov.bappeda.ui.article.adapter
+package id.go.sultengprov.bappeda.ui.artikel.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.util.Log.d
@@ -9,17 +9,14 @@ import com.bumptech.glide.Glide
 import id.go.sultengprov.bappeda.R
 import id.go.sultengprov.bappeda.common.OnItemClickListener
 import id.go.sultengprov.bappeda.model.Article
-import id.go.sultengprov.bappeda.ui.article.ArticleActivity
+import id.go.sultengprov.bappeda.ui.artikel.ArticleActivity
 import io.reactivex.Flowable
-import io.reactivex.Observable
-import io.reactivex.ObservableSource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.adapter_article.view.*
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
-import java.util.concurrent.Callable
 
 /**
  * Created by ilham on 9/1/17.
@@ -65,7 +62,7 @@ class ArticleAdapter(val activity: ArticleActivity,
             }
             article.createdBy = createBy
             itemView.tvCreatedBy.text = " $createBy"
-            itemView.progress.visibility = View.VISIBLE
+            /*itemView.progress.visibility = View.VISIBLE*/
             if (article.imgUrl == ""){
                 Flowable.fromCallable {
                     val document: Document = Jsoup.connect(article.url).get()
@@ -94,26 +91,22 @@ class ArticleAdapter(val activity: ArticleActivity,
                     articleList.set(position, article)
                     activity.runOnUiThread {
                         Glide.with(activity)
-                                .load(imgUrl)
+                                .load(article.imgUrl)
                                 .into(itemView.imgArticle)
-                        itemView.progress.visibility = View.GONE
                         itemView.tvContent.text = content
                         itemView.tvTotalView.text = " $totalView"
                         itemView.tvCreatedDate.text = " $createDate"
                     }
                 }.subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .doOnEach { itemView.progress.visibility = View.GONE }
                         .subscribe(
                                 { d(TAG, "load image succes") },
                                 { d(TAG, "load image error : ${it.localizedMessage}") }
                         )
-            }else{
-                Glide.with(activity)
-                        .load(article.imgUrl)
-                        .into(itemView.imgArticle)
-                itemView.progress.visibility = View.GONE
             }
+            Glide.with(activity)
+                    .load(article.imgUrl)
+                    .into(itemView.imgArticle)
 
             itemView.setOnClickListener { onItemClickListener.onItemClick(article, position) }
         }

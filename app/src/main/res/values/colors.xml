@@ -9,4 +9,5 @@
     <color name="titleTextColor">#646464</color>
 
     <color name="textDefault">#FF000000</color>
+    <color name="textGrey">#97a7b9</color>
 </resources>

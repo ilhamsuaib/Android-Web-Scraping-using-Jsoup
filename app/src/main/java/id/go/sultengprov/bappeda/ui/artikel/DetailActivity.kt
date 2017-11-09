@@ -1,10 +1,12 @@
-package id.go.sultengprov.bappeda.ui.article
+package id.go.sultengprov.bappeda.ui.artikel
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AlertDialog
 import android.util.Log.d
 import android.util.TypedValue
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
@@ -55,9 +57,30 @@ class DetailActivity : AppCompatActivity(), ArticleView {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_detail, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == android.R.id.home) {
             finish()
+        } else if (item?.itemId == R.id.menu_share) {
+            val options = arrayOf("Facebook", "Twitter")
+            AlertDialog.Builder(this)
+                    .setItems(options, {dialogInterface, i ->
+                        when (i) {
+                            0 -> {
+
+                            }
+                            1 -> {
+
+                            }
+                        }
+                        toast("soon, share ${options[i]}")
+                        dialogInterface.cancel()
+                    })
+                    .show()
         }
         return super.onOptionsItemSelected(item)
     }
